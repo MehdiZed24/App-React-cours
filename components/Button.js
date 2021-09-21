@@ -2,13 +2,12 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 export default function Button(props) {
-
-
-  
   return (
-    <TouchableOpacity onPress={props.onClick}>
-      <Text style={styles.bouton}>{props.name}</Text>
-    </TouchableOpacity>,
+    (
+      <TouchableOpacity onPress={props.onClick}>
+        <Text style={styles.bouton}>{props.name}</Text>
+      </TouchableOpacity>
+    ),
     (
       <TouchableOpacity onPress={props.onClick}>
         <Text style={styles.bouton}>{props.name}</Text>

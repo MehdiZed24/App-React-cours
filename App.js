@@ -8,6 +8,9 @@ export default function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const handleLogin = () => {};
+  // console.log("Email : " + email + "   -   Password : " + password);
+
   // function onAdd() {
   //   setCount(count + 1);
   // }
@@ -15,7 +18,7 @@ export default function App() {
   // function onSub() {
   //   setCount(count - 1);
   // }
-
+  //Créer un composant input sur le modèle boutton!!!
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -31,7 +34,7 @@ export default function App() {
         placeholder="Email"
         placeholderTextColor="#bbb"
         style={styles.input}
-        onchangeText={(text) => setEmail(text)}
+        onChangeText={(text) => setEmail(text)}
       />
 
       <TextInput
@@ -41,6 +44,7 @@ export default function App() {
         style={styles.input}
         onchangeText={(text) => setPassword(text)}
       />
+      <Button name="Login" onClick={handleLogin}></Button>
       <StatusBar style="auto" />
     </View>
   );
