@@ -19,11 +19,11 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: "#272727",
     borderWidth: 1,
-    padding: 8,
+    padding: 3,
     margin: 1,
     width: "90%",
     color: "#bbb",
     borderRadius: 5,
-    borderColor: "#fff",
+    borderColor: "grey",
   },
 });
