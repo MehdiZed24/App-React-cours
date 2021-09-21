@@ -1,5 +1,3 @@
-# App-React-cours
-cours sur React Natif
 REACT 2.0 Doranco
 
 
@@ -74,4 +72,31 @@ On a créé un dossier components dans l’arborescence. Création du fichier Bu
 Utilisation de “props”.
 Props est un objet 
 
+On travaille sur le formulaire et les input. On a  utilisé <TextInput>
+ <TextInput
+       placeholder="Email"
+       placeholderTextColor="#bbb"
+       style={styles.input}
+       onchangeText={(text) => setEmail(text)}
+     />
+ 
+     <TextInput
+       secureTextEntry={true} //Permet de cacher le texte du mot de passe, false par défaut
+       placeholder="Mot de passe"
+       placeholderTextColor="#bbb"
+       style={styles.input}
+       onchangeText={(text) => setPassword(text)}
+     />
+
+L’attribut : secureTextEntry={true}, permet de masquer le texte sur le champ du password.
+
+/**/
+
+Installation de react-navigation avec : 
+yarn add react-navigation
+
+puis
+yarn add react-navigation-stack
+et
+expo install react-native-gesture-handler react-native-reanimated
 
