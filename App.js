@@ -5,7 +5,9 @@ import Button from "./components/Button.js";
 import { useState } from "react";
 
 export default function App() {
-  const [count, setCount] = useState(0);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   // function onAdd() {
   //   setCount(count + 1);
   // }
@@ -24,16 +26,20 @@ export default function App() {
       {/*<Text style={styles.titre}>{count}</Text>
       <Button name="Ajouter" onClick={onAdd}/>
       <Button name="Soustraire" onClick={onSub} /> */}
-      
+
       <TextInput
         placeholder="Email"
         placeholderTextColor="#bbb"
         style={styles.input}
+        onchangeText={(text) => setEmail(text)}
       />
+
       <TextInput
+        secureTextEntry={true} //Permet de cacher le texte du mot de passe, false par défaut
         placeholder="Mot de passe"
         placeholderTextColor="#bbb"
         style={styles.input}
+        onchangeText={(text) => setPassword(text)}
       />
       <StatusBar style="auto" />
     </View>
