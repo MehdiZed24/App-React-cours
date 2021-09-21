@@ -22,10 +22,19 @@ export default function App() {
       </View>
 
       {/*<Text style={styles.titre}>{count}</Text>
-       <Button name="Ajouter" onClick={onAdd}/>
+      <Button name="Ajouter" onClick={onAdd}/>
       <Button name="Soustraire" onClick={onSub} /> */}
-      <TextInput placeholder="Email" placeholderTextColor="#bbb" style={styles.input}/>
-
+      
+      <TextInput
+        placeholder="Email"
+        placeholderTextColor="#bbb"
+        style={styles.input}
+      />
+      <TextInput
+        placeholder="Mot de passe"
+        placeholderTextColor="#bbb"
+        style={styles.input}
+      />
       <StatusBar style="auto" />
     </View>
   );
@@ -41,12 +50,15 @@ const styles = StyleSheet.create({
   header: {
     borderRadius: 5,
     backgroundColor: "#093357",
+    marginBottom: 25,
+    width: "90%",
   },
   titre: {
     fontWeight: "bold",
     padding: 25,
     fontSize: 32,
     color: "#bbb",
+    textAlign: "center",
   },
   text: {
     fontWeight: "bold",
@@ -59,7 +71,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#272727",
     borderWidth: 1,
     padding: 8,
-    margin: 10,
+    margin: 2,
     width: "90%",
     color: "#bbb",
     borderRadius: 5,
