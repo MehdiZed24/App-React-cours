@@ -1,15 +1,8 @@
 import React from "react";
-import Button from "./components/Button";
-import Input from "./components/Input";
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import Button from "../components/Button";
+import Input from "../components/Input";
+import { Text, View, StyleSheet } from "react-native";
 import { useState } from "react";
-
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -31,3 +24,21 @@ export default function Login() {
     </>
   );
 }
+const styles = StyleSheet.create({
+  header: {
+    borderRadius: 5,
+    backgroundColor: "#093357",
+  },
+  titre: {
+    fontWeight: "bold",
+    padding: 25,
+    fontSize: 32,
+    color: "#bbb",
+  },
+  text: {
+    fontWeight: "bold",
+    padding: 12,
+    fontSize: 16,
+    color: "#bbb",
+  },
+});
