@@ -2,16 +2,16 @@ import React from "react";
 import { TextInput, StyleSheet, View } from "react-native";
 
 export default function Input(props) {
-  console.log(props.isPassword)
   return (
     <View>
-    <TextInput
-      onChangeText={(text) => props.onChange(text)}
-      placeholder={props.name}
-      placeholderTextColor="#FFF"
-      secureTextEntry={props.isPassword}
-      style={styles.input}
-    />
+      <TextInput
+        onChangeText={(text) => props.onChange(text)}
+        placeholder={props.name}
+        placeholderTextColor="#FFF"
+        secureTextEntry={props.isPassword}
+        style={styles.input}
+        onBlur={props.onBlur}
+      />
     </View>
   );
 }

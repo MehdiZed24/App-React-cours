@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useContext } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import {Text, TextInput, View } from "react-native";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import { globalStyles } from "../styles/GlobalStyles";
@@ -36,9 +36,9 @@ export default function Login(props) {
   };
   return (
     <View style={{ alignItems: "center" }}>
-      <View style={styles.header}>
+      <View style={globalStyles.header}>
         <Text style={globalStyles.titre}>Bienvenue!</Text>
-        <Text style={styles.text}>Commencez par vous connecter.</Text>
+        <Text style={globalStyles.text}>Commencez par vous connecter.</Text>
       </View>
 
       <Formik
@@ -46,7 +46,6 @@ export default function Login(props) {
         validationSchema={authSchema}
         //onSubmit est un parametre qui accepte une fonction à executer
         onSubmit={(values) => {
-          console.log("mail: " + values.email + " pass: " + values.password);
           handleSubmit(values.email, values.password);
         }}
       >
@@ -55,20 +54,26 @@ export default function Login(props) {
           <>
             {/* Le paramètre  valeur permet a formik d'écouter les changements de notre input
             Formik nous offre la fonction handleChange pour modifier les valeurs. Nous n'avons pas besoin de useState */}
+
             <Input
               name="Email"
               onChange={formikProps.handleChange("email")}
               valeur={formikProps.values.email}
+              onBlur={formikProps.handleBlur("email")}
+              //  La propriété onBlur est une fonction qui s'execute quand on quitte un input
             />
-            <Text>{formikProps.errors.email}</Text>
+            <Text style={globalStyles.errorText}>
+              {/* La propriété touched est un boolean qui permet de savoir si un input a été touché ou pas */}
+              {formikProps.touched.email && formikProps.errors.email}
+            </Text>
             <Input
               name="Mot de passe"
               onChange={formikProps.handleChange("password")}
               isPassword
               valeur={formikProps.values.password}
-              onblur={()=> formikProps.handleBlur("password")}
+              onBlur={() => formikProps.handleBlur("password")}
             />
-            <Text style={styles.errorText}>
+            <Text style={globalStyles.errorText}>
               {formikProps.touched.password && formikProps.errors.password}
             </Text>
             {/* On utilise le mot-clé fourni par Formik 'handleSubmit', pour exécuter la fonction onSubmit préciser plus haut */}
@@ -80,25 +85,10 @@ export default function Login(props) {
         name="Signin"
         // Il faut passer une référence à la fonction en utilisant la syntaxe en flèche.
         onClick={() =>
-          props.navigation.navigate("Signin", { email: "emaifgl" })
+          props.navigation.navigate("Signin", { email: "email" })
         }
       />
     </View>
   );
 }
-const styles = StyleSheet.create({
-  header: {
-    backgroundColor: "#093357",
-    width: "100%",
-  },
-  text: {
-    fontWeight: "bold",
-    padding: 12,
-    fontSize: 16,
-    color: "#bbb",
-  },
-  errorText : {
-    color:"red",
-    fontWeight:"bold"
-  }
-});
+
