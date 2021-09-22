@@ -3,11 +3,9 @@ import { StyleSheet } from "react-native";
 export const globalStyles = StyleSheet.create({
   titre: {
     fontWeight: "bold",
-    padding: 25,
+    padding: 10,
     fontSize: 32,
-    color: "#bbb",
-    textAlign:"center",
-    alignItems:"center"
+    color: "#f44",
   },
   header: {
     backgroundColor: "#093357",
@@ -18,10 +16,5 @@ export const globalStyles = StyleSheet.create({
     padding: 12,
     fontSize: 16,
     color: "#bbb",
-    alignItems:"center"
-  },
-  errorText: {
-    color: "red",
-    fontWeight: "bold",
   },
 });

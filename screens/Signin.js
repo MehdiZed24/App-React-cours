@@ -1,8 +1,11 @@
-import { Formik } from "formik";
 import React from "react";
-import { View, Text, Input, Button } from "react-native";
+import { Text, View } from "react-native";
 import { globalStyles } from "../styles/GlobalStyles";
+
+import { Formik } from "formik";
 import * as yup from "yup";
+import Input from "../components/Input";
+import Button from "../components/Button";
 
 const authSchema = yup.object({
   email: yup
@@ -12,38 +15,34 @@ const authSchema = yup.object({
   password: yup
     .string()
     .required("password ne peut pas être vide")
-    .min(6, "le mot de passe doit contenir au moins 6 caratères ")
-    .test("isCorrectPassword", "Mot de passe incorrect", (valeur) => {
-      return true;
-    }),
-  lastName: yup.string().required("Nom ne peut pas être vide"),
-  firstName: yup.string().required("Prénom ne peut pas être vide"),
+    .min(6, "le mot de passe doit contenir au moins 6 caratères "),
+  lastname: yup
+  .string()
+  .required("lastname ne peut pas être vide"),
+  firstname: yup
+  .string()
+  .required("firstname ne peut pas être vide"),
+  // 1 nom du test, 2 le mesg,  3 la fonction
 });
 
 export default function Signin(props) {
   return (
     <View>
-      <Text style={globalStyles.titre}>SIGNIN</Text>
-      <Text style={globalStyles.titre}>
-        {/* 
-        On peut recevoir des prop sà travers la navigation : 
-        {props.navigation.getParam("email")} */}
-      </Text>
-      <View style={styles.header}>
+      <View style={globalStyles.header}>
         <Text style={globalStyles.titre}>Bienvenue!</Text>
-        <Text style={styles.text}>Commencez par vous connecter.</Text>
+        <Text style={globalStyles.text}>Commencez par vous connecter.</Text>
       </View>
       <View>
         <Formik
           initialValues={{
             email: "",
             password: "",
-            lastName: "",
-            firstName: "",
+            lastname: "",
+            firstname: "",
           }}
           validationSchema={authSchema}
           onSubmit={(values) => {
-            console.log(values.firstName);
+            console.log(values.firstname);
           }}
         >
           {(formikProps) => (
@@ -54,42 +53,39 @@ export default function Signin(props) {
                 valeur={formikProps.values.email}
                 onBlur={formikProps.handleBlur("email")}
               />
-              <Text style={globalStyles.errorText}>
+              <Text>
                 {formikProps.touched.email && formikProps.errors.email}
               </Text>
               <Input
-                name="password"
+                name="Mot de passe"
                 onChange={formikProps.handleChange("password")}
                 valeur={formikProps.values.password}
                 onBlur={formikProps.handleBlur("password")}
               />
-              <Text style={globalStyles.errorText}>
+              <Text>
                 {formikProps.touched.password && formikProps.errors.password}
               </Text>
               <Input
-                name="lastName"
-                onChange={formikProps.handleChange("lastName")}
-                valeur={formikProps.values.lastName}
-                onBlur={formikProps.handleBlur("lastName")}
+                name="Prénom"
+                onChange={formikProps.handleChange("firstname")}
+                valeur={formikProps.values.firstname}
+                onBlur={formikProps.handleBlur("firstname")}
               />
-              <Text style={globalStyles.errorText}>
-                {formikProps.touched.lastName && formikProps.errors.lastName}
+              <Text>
+                {formikProps.touched.firstname && formikProps.errors.firstname}
               </Text>
               <Input
-                name="firstName"
-                onChange={formikProps.handleChange("firstName")}
-                valeur={formikProps.values.firstName}
-                onBlur={formikProps.handleBlur("firstName")}
+                name="Nom"
+                onChange={formikProps.handleChange("lastname")}
+                valeur={formikProps.values.lastname}
+                onBlur={formikProps.handleBlur("lastname")}
               />
-              <Text style={globalStyles.errorText}>
-                {formikProps.touched.firstName && formikProps.errors.firstName}
+              <Text>
+                {formikProps.touched.lastname && formikProps.errors.lastname}
               </Text>
-              
-              <Button
-                name="Inscription"
-                onClick={formikProps.handleSubmit}
-              ></Button>
+              <Button name="Inscription" onClick={formikProps.handleSubmit}></Button>
             </>
+            
           )}
         </Formik>
       </View>

@@ -1,20 +1,34 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, View } from "react-native";
 import { useState } from "react";
+import { StyleSheet, View } from "react-native";
+import Button from "./components/Button";
+import Input from "./components/Input";
+import Login from "./screens/Login";
 import Home from "./screens/Home";
 import { UserContext } from "./contexts/UserContext";
 import AuthStack from "./routes/AuthStack";
-import Input from "./components/Input";
 
 export default function App() {
-  const [user, setUser] = useState({ email: "", isAuth: false }); //Déclaration d'une constante "Utilisateur"
+  // On declare une constante utilisateur
+  const [user, setUser] = useState({ email: "", isAuth: false });
 
   return (
     <View style={styles.container}>
-      {/*Rendu conditionnel en rapport avec user.isAuth */}
       <UserContext.Provider value={{ user, setUser }}>
-        {user.isAuth ? <Home /> : <AuthStack> </AuthStack>}
+        {/* //1ere accolade c'est du jsx 2eme pr l'objet 
+            UCP c'est un composant fonctionnel qui prend comme pté, value donc un objet.
+            Compo fonctionnel.     
+  
+        */}
+
+        {/*  Rendu conditionnel en rapport avec user.isAuth */}
+        {user.isAuth ? (
+          <Home></Home> // mon composant home a une fonction qui se déconnecte.
+        ) : (
+          // <Login ></Login>
+          <AuthStack></AuthStack>
+        )}
         <StatusBar hidden={false} style="auto" />
       </UserContext.Provider>
     </View>
@@ -24,6 +38,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+
     fontWeight: "bold",
   },
 });

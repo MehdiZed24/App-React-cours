@@ -1,29 +1,28 @@
-import React from "react";
-import { TextInput, StyleSheet, View } from "react-native";
+import React from 'react';
+import { StyleSheet, TextInput } from 'react-native';
 
-export default function Input(props) {
-  return (
-    <View>
-      <TextInput
-        onChangeText={(text) => props.onChange(text)}
-        placeholder={props.name}
-        placeholderTextColor="#FFF"
-        secureTextEntry={props.isPassword}
+const Input = (props) => {
+    return (
+        <TextInput
+        onChangeText={(text)=>props.onChange(text)}//pareil que event.target.value; Text=Onchange(text)
         style={styles.input}
+        placeholder={props.name}
+        placeholderTextColor="#bbb"
+        value={props.valeur}
         onBlur={props.onBlur}
-      />
-    </View>
-  );
+      ></TextInput>
+    )
 }
+
 const styles = StyleSheet.create({
-  input: {
-    backgroundColor: "#272727",
-    borderWidth: 1,
-    padding: 3,
-    margin: 1,
-    width: "90%",
-    color: "#bbb",
-    borderRadius: 5,
-    borderColor: "grey",
-  },
-});
+    input:{
+      backgroundColor:"#093357",
+      padding:8,
+      margin:10,
+      width:100,
+      color:"#bbb",
+      borderRadius:5,
+      textAlign:"center"
+    }
+  });
+export default Input;

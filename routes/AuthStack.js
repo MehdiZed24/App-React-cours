@@ -1,14 +1,20 @@
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import login from "../screens/Login";
+import Login from "../screens/Login";
 import Signin from "../screens/Signin";
 
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 const screens = {
   Login: {
-    screen: login,
+    screen: Login,
+    navigationOptions: {
+      title: "Connection",
+    },
   },
   Signin: {
     screen: Signin,
+    navigationOptions: {
+      title: "Inscription",
+    },
   },
 };
 const AuthStack = createStackNavigator(screens);
