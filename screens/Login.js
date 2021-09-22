@@ -6,7 +6,7 @@ import Input from "../components/Input";
 import { globalStyles } from "../styles/GlobalStyles";
 import { UserContext } from "../contexts/UserContext";
 
-export default function Login() {
+export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const context = useContext(UserContext);
@@ -16,7 +16,7 @@ export default function Login() {
     context.setUser({ email: email, isAuth: true });
   };
   return (
-    <>
+    <View style={{alignItems:"center"}}>
       <View style={styles.header}>
         <Text style={globalStyles.titre}>Bienvenue!</Text>
         <Text style={styles.text}>Se connecter.</Text>
@@ -26,7 +26,12 @@ export default function Login() {
       <Input name="Mot de passe" onChange={setPassword} isPassword />
 
       <Button name="Login" onClick={handleSubmit}></Button>
-    </>
+      <Button
+        name="Signin"
+        //Il faut passer une référence à la fonction en utilisant la syntaxe en flèche
+        onClick={() => props.navigation.navigate("Signin")}
+      ></Button>
+    </View>
   );
 }
 const styles = StyleSheet.create({

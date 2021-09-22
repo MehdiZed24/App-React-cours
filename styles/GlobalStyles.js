@@ -6,5 +6,6 @@ export const globalStyles = StyleSheet.create({
     padding: 25,
     fontSize: 32,
     color: "#bbb",
+    textAlign:"center",
   },
 });

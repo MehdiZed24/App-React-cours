@@ -1,9 +1,15 @@
-/**
- * Installation de react-navigation avec : 
-yarn add react-navigation
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import login from "../screens/Login";
+import Signin from "../screens/Signin";
 
-puis
-yarn add react-navigation-stack
-et
-expo install react-native-gesture-handler react-native-reanimated
- */
+const screens = {
+  Login: {
+    screen: login,
+  },
+  Signin: {
+    screen: Signin,
+  },
+};
+const AuthStack = createStackNavigator(screens);
+export default createAppContainer(AuthStack);
