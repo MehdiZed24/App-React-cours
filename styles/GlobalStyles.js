@@ -7,6 +7,7 @@ export const globalStyles = StyleSheet.create({
     fontSize: 32,
     color: "#bbb",
     textAlign:"center",
+    alignItems:"center"
   },
   header: {
     backgroundColor: "#093357",
@@ -17,6 +18,7 @@ export const globalStyles = StyleSheet.create({
     padding: 12,
     fontSize: 16,
     color: "#bbb",
+    alignItems:"center"
   },
   errorText: {
     color: "red",

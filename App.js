@@ -5,6 +5,7 @@ import { useState } from "react";
 import Home from "./screens/Home";
 import { UserContext } from "./contexts/UserContext";
 import AuthStack from "./routes/AuthStack";
+import Input from "./components/Input";
 
 export default function App() {
   const [user, setUser] = useState({ email: "", isAuth: false }); //Déclaration d'une constante "Utilisateur"
