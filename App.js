@@ -2,14 +2,25 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import Button from "./components/Button";
-import Input from "./components/Input";
-import Login from "./screens/Login";
 import Home from "./screens/Home";
 import { UserContext } from "./contexts/UserContext";
 import AuthStack from "./routes/AuthStack";
+// import firebaseConfig from "./firebase/firebaseConfig";
+import firebase from "firebase/app"
+import "firebase/auth";
 
 export default function App() {
+  if (!firebase.apps.length) {
+    firebase.initializeApp({
+      apiKey: "AIzaSyCS4WOaIC0nNX_-BedSbfPlIwtv-r_nBkY",
+      authDomain: "monapp-984f2.firebaseapp.com",
+      projectId: "monapp-984f2",
+      storageBucket: "monapp-984f2.appspot.com",
+      messagingSenderId: "587063138272",
+      appId: "1:587063138272:web:8d1429ff1c807fe1567d85",
+    });
+    console.log("Firebase connected!");
+  }
   // On declare une constante utilisateur
   const [user, setUser] = useState({ email: "", isAuth: false });
 
