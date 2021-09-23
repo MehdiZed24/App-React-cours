@@ -7,6 +7,10 @@ import { globalStyles } from "../styles/GlobalStyles";
 import { UserContext } from "../contexts/UserContext";
 import { Formik } from "formik";
 import * as yup from "yup";
+import { logIn, getInformations } from "../firebase/firebaseApi";
+
+
+
 // Par choix, je décide de déclarer le authSchema a l'extérieure dans l'éventualité de l'exporter
 // on créé deux objets avec leur propriétés
 const authSchema = yup.object({
@@ -18,10 +22,10 @@ const authSchema = yup.object({
     .string()
     .required("password ne peut pas être vide")
     .min(6, "le mot de passe doit contenir au moins 6 caratères ")
-    .test("isCorrectPassword", "Mot de passe incorrect", (valeur) => {
+    .test("isCorrectPassword", "Mot de passe incorrect", (val) => {
       return true;
     }),
-  // 1 nom du test, 2 le mesg,  3 la fonction
+  // 1 nom du test, 2 le message,  3 la fonction
 });
 
 export default function Login(props) {
@@ -29,10 +33,17 @@ export default function Login(props) {
   // const [theEmail, setEmail] = useState("");
   // const [password, setPassword] = useState("");
   const context = useContext(UserContext);
-  // Fonction qui permet de mettre a jour l'utilisateur
-  const handleSubmit = (email, password) => {
-    /* j'utilise plus les deux constantes, donc je dois remplir ici avec les valeur passées dans handlesubmit de formik */
-    context.setUser({ email: email, isAuth: true });
+
+  // Fonction qui permet de mettre a jour l'utilisateur si logIn réussi l'authentification
+  const handleSubmit = async (email, password) => {
+    if ( await logIn(email, password)) {
+      const currentUser = firebase.auth().currentUser;
+      console.log(currentUser);
+      console.log(getInformations(currentUser.uid));
+      //context.setUser({ email: email, isAuth: true });
+
+    }
+    /* J'utilise plus les deux constantes, donc je dois remplir ici avec les valeur passées dans handleSubmit de formik */
   };
   return (
     <View style={{ alignItems: "center" }}>

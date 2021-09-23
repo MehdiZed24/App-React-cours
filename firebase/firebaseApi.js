@@ -1,8 +1,9 @@
 import React from "react";
-import firebase from "firebase/app"
-import "firebase/auth"
+import firebase from "firebase/app";
+import "firebase/auth";
 
 import "firebase/firestore";
+import { Alert } from "react-native";
 
 export async function registration(email, password, lastName, firstName) {
   try {
@@ -22,4 +23,19 @@ export async function registration(email, password, lastName, firstName) {
   } catch (error) {
     Alert.alert("Un problème est survenu", error.message); //Alert vient de react natif, c'est une fonction qui prend deux paramètres.
   }
+}
+
+export async function logIn(email, password) {
+  try {
+    await firebase.auth().signInWithEmailAndPassword(email, password);
+  } catch (error) {
+    Alert.alert("Un problème est survenu", error.message);
+    return false;
+  }
+  return true;
+}
+//La fonction va récupérer le document associé au uid fournit en paramètre
+export async function getInformations(uid) {
+  const db = firebase.firestore();
+  return db.collection('users').doc(uid)
 }
